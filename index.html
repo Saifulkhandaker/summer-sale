@@ -127,7 +127,7 @@
             <div class="bg-white py-6 rounded-lg px-5 mb-4">
                 <p class="text-2xl text-[#111111] font-medium">Have coupon?</p>
                 <input id="" class="border-2 rounded-l-md py-1 px-2 mt-2" type="text" placeholder="Coupon code">
-                <button class="text-[#FFF] font-semibold bg-[#E527B2] p-[6px] rounded-r-md -ml-2 px-3">Apply</button>
+                <button id="coupon-btn" class="text-[#FFF] font-semibold bg-[#E527B2] p-[6px] rounded-r-md -ml-2 px-3">Apply</button>
             </div>
             <!-- product and purchase -->
             <div class="bg-white py-6 rounded-lg px-5">
@@ -137,12 +137,12 @@
                 <div class="text-lg text-[#111111] font-medium">
                     <p>Total price: <span id="total-price" class="text-[#11111180]">00</span> <span class="text-[#11111180]">Tk</span></p>
                     <p>Discount: <span id="" class="text-[#11111180]">00</span> <span class="text-[#11111180]">Tk</span></p>
-                    <p>Total: <span id="" class="text-[#11111180]">00</span> <span class="text-[#11111180]">Tk</span></p>
+                    <p>Total: <span id="new-total" class="text-[#11111180]">00</span> <span class="text-[#11111180]">Tk</span></p>
                 </div>
                 <hr class="mt-5">
                 <div class="text-center mt-8">
                   <!-- Open the modal using ID.showModal() method -->
-              <button class="text-[#FFF] font-semibold bg-[#E527B2] py-2 rounded-lg  px-8" onclick="my_modal_5.showModal()">Make Purchase</button>
+              <button id="purchase" class="text-[#FFF] font-semibold bg-[#E527B2] py-2 rounded-lg  px-8" onclick="my_modal_5.showModal()">Make Purchase</button>
               <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
                 <form method="dialog" class="modal-box">
                   <div>
@@ -152,7 +152,7 @@
                         <h2 class="card-title text-4xl font-bold mt-2 text-[#111111]">Congratulations</h2>
                         <p class="text-lg font-normal text-[#11111180]">Your Purchase the product</p>
                        <div class="mt-4 items-center text-center">
-                        <button id="purchase" class="text-[#FFF] font-semibold bg-[#E527B2] py-2 rounded-lg  px-8 mt-2 ">Go Home</button>
+                        <button id="goHome" class="text-[#FFF] font-semibold bg-[#E527B2] py-2 rounded-lg  px-8 mt-2 ">Go Home</button>
                       </div>
                     </div>
                   </div>

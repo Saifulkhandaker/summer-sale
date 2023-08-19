@@ -13,7 +13,6 @@ function capPurchase(){
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
-    console.log("Total Text:", totalText); // Check the value here
     const totalPrice = parseFloat(totalText);
     
     const capTotalPrice = capPrice + totalPrice;
@@ -35,7 +34,6 @@ function jerseyPurchase(){
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
-    console.log("Total Text:", totalText); // Check the value here
     const totalPrice = parseFloat(totalText);
     
     const jerseyTotalPrice = jerseyPrice + totalPrice
@@ -55,7 +53,6 @@ function catesPurchase(){
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
-    console.log("Total Text:", totalText); // Check the value here
     const totalPrice = parseFloat(totalText);
     
     const catesTotalPrice = catesPrice + totalPrice
@@ -76,7 +73,6 @@ function chairPurchase(){
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
-    console.log("Total Text:", totalText); // Check the value here
     const totalPrice = parseFloat(totalText);
     
     const chairTotalPrice = chairPrice + totalPrice
@@ -96,7 +92,6 @@ function childrenPurchase(){
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
-    console.log("Total Text:", totalText); // Check the value here
     const totalPrice = parseFloat(totalText);
     
     const childrenTotalPrice = childrenPrice + totalPrice
@@ -117,16 +112,12 @@ function sofaPurchase(){
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
-    console.log("Total Text:", totalText); // Check the value here
     const totalPrice = parseFloat(totalText);
     
     const sofaTotalPrice = sofaPrice + totalPrice
     totalField.innerText = sofaTotalPrice.toFixed(2);
 
 }
-
-
-
 
 
 
@@ -148,8 +139,30 @@ function getTitle(titleId){
 }
 
 
+
+
+
+
+
+
+
+
+// purchase button disabled
+const newTotalField = document.getElementById('new-total');
+const totalText = newTotalField.innerText;
+const newTotalPrice = parseFloat(totalText);
+const purchaseBtn = document.getElementById('purchase');
+
+if (newTotalPrice < 200) {
+    purchaseBtn.disabled = true;
+    purchaseBtn.style.backgroundColor = '#CCCCCC';
+} else {
+    purchaseBtn.disabled = false;
+}
+
+
 // refresh the whole page
-const purchaseButton = document.getElementById('purchase');
-purchaseButton.addEventListener('click', function() {
-    location.reload(); // Refresh the whole page
+const goHomeButton = document.getElementById('goHome');
+goHomeButton.addEventListener('click', function() {
+    location.reload(); // 
 });
