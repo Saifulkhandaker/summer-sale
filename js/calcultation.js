@@ -1,6 +1,24 @@
 
-let itemCount = 1;
+// refresh the whole page using go home button
+const goHomeButton = document.getElementById('goHome');
+goHomeButton.addEventListener('click', function() {
+    location.reload();
+});
 
+// purchase button disabled
+const purchaseBtn = document.getElementById('purchase')
+purchaseBtn.disabled = true;
+purchaseBtn.style.backgroundColor = '#CCCCCC';
+
+// cuppon  button disabled
+const cupponBtn = document.getElementById('coupon-btn');
+cupponBtn.disabled = true;
+cupponBtn.style.backgroundColor = '#CCCCCC';
+
+
+
+// function for totalprice and product
+let itemCount = 1;
 function purchaseItem(itemType) {
     const title = getTitle(`${itemType}-title`);
     const ol = document.createElement('ol');
@@ -19,6 +37,19 @@ function purchaseItem(itemType) {
     
     const itemTotalPrice = price + totalPrice;
     totalField.innerText = itemTotalPrice.toFixed(2);
+    
+    //purchasebutton enabled 
+    if(itemTotalPrice > 0){
+        purchaseBtn.disabled = false;
+        purchaseBtn.style.backgroundColor ='';
+    }
+    // coupon button enabled
+    if(itemTotalPrice > 200){
+        cupponBtn.disabled = false;
+cupponBtn.style.backgroundColor = '';
+    }
+    return itemTotalPrice;
+
 }
 
 // Event listeners for different items
@@ -46,6 +77,34 @@ document.getElementById('sofa-card').addEventListener('click', function() {
 });
 
 
+
+
+// cuppon btn applyed in condition
+document.getElementById('coupon-btn').addEventListener('click', function(){
+    const discountField = document.getElementById('discount-price')
+        const discountText = discountField.innerText;
+        const discount = parseFloat(discountText);
+        const totalPriceField = document.getElementById('total-price')
+        const totalPriceText = totalPriceField.innerText;
+        const totalPrice = parseFloat(totalPriceText);
+        if(totalPrice > 200){
+        cupponBtn.disabled = false;
+        cupponBtn.style.backgroundColor = '';
+        const couponField = document.getElementById('coupon-code');
+        const couponCode = couponField.value;
+        if(couponCode == 'SELL200'){
+        const discountTotal =( (totalPrice * 20) / 100);
+        discountField.innerText = discountTotal.toFixed(2);
+        const newTotalValue = document.getElementById('new-total');
+        const newTotalText = newTotalValue.innerText;
+        const newTotal = parseFloat(newTotalText);
+        const total = totalPrice - discountTotal;
+        newTotalValue.innerText = total;
+        }
+    } 
+})
+       
+
 // Reusable function to get input value field as a number
 function getInputValue(fieldId){
     const inputField = document.getElementById(fieldId);
@@ -60,46 +119,3 @@ function getTitle(titleId){
     const title = titleField.innerText;
     return title;
 }
-
-
-
-
-
-// cuppon-btn 
-const cupponBtn = document.getElementById('coupon-btn');
-const totalPriceField = document.getElementById('total-price');
-const total = totalPriceField.innerText;
-const totalPrice = parseFloat(total);
-
-if(totalPrice < 200){
-    cupponBtn.disabled = true;
-    cupponBtn.style.backgroundColor = '#CCCCCC';
-}else {
-    cupponBtn.disabled = false;
-    
-}
-
-
-
-
-
-
-// purchase button disabled
-const newTotalField = document.getElementById('new-total');
-const totalText = newTotalField.innerText;
-const newTotalPrice = parseFloat(totalText);
-const purchaseBtn = document.getElementById('purchase');
-
-if (newTotalPrice < 200) {
-    purchaseBtn.disabled = true;
-    purchaseBtn.style.backgroundColor = '#CCCCCC';
-} else {
-    purchaseBtn.disabled = false;
-}
-
-
-// refresh the whole page using go home button
-const goHomeButton = document.getElementById('goHome');
-goHomeButton.addEventListener('click', function() {
-    location.reload();
-});
