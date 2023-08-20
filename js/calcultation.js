@@ -1,126 +1,49 @@
 
+let itemCount = 1;
 
-// cap
-function capPurchase(){
-    const capTitle = getTitle("cap-title");
-    const li = document.createElement('li');
-    li.innerText = capTitle;
+function purchaseItem(itemType) {
+    const title = getTitle(`${itemType}-title`);
+    const ol = document.createElement('ol');
+    ol.innerText = `${itemCount}. ${title}`;
+    itemCount++;
+    
     const selectedItems = document.getElementById('selected-items');
-    selectedItems.appendChild(li);
+    selectedItems.appendChild(ol);
 
-    const capPriceField = getInputValue('cap-price');
-    const capPrice = parseFloat(capPriceField);
+    const priceField = getInputValue(`${itemType}-price`);
+    const price = parseFloat(priceField);
 
     const totalField = document.getElementById('total-price');
     const totalText = totalField.innerText;
     const totalPrice = parseFloat(totalText);
     
-    const capTotalPrice = capPrice + totalPrice;
-    totalField.innerText = capTotalPrice.toFixed(2);
-
+    const itemTotalPrice = price + totalPrice;
+    totalField.innerText = itemTotalPrice.toFixed(2);
 }
 
-// jersey
-function jerseyPurchase(){
-    const jerseyTitle = getTitle('jersey-title');
-    const li = document.createElement('li');
-    li.innerText = jerseyTitle
-    const selectedItems = document.getElementById('selected-items');
-    selectedItems.appendChild(li);
-    
+// Event listeners for different items
+document.getElementById('cap-card').addEventListener('click', function() {
+    purchaseItem('cap');
+});
 
-    const jerseyPriceField = getInputValue('jersey-price');
-    const jerseyPrice = parseFloat(jerseyPriceField);
+document.getElementById('jersey-card').addEventListener('click', function() {
+    purchaseItem('jersey');
+});
 
-    const totalField = document.getElementById('total-price');
-    const totalText = totalField.innerText;
-    const totalPrice = parseFloat(totalText);
-    
-    const jerseyTotalPrice = jerseyPrice + totalPrice
-    totalField.innerText = jerseyTotalPrice.toFixed(2);
-}
+document.getElementById('cates-card').addEventListener('click', function() {
+    purchaseItem('cates');
+});
+document.getElementById('chair-card').addEventListener('click', function() {
+    purchaseItem('chair');
+});
 
-// cates
-function catesPurchase(){
-    const catesTitle = getTitle('cates-title');
-    const li = document.createElement('li');
-    li.innerText = catesTitle
-    const selectedItems = document.getElementById('selected-items');
-    selectedItems.appendChild(li);
+document.getElementById('children-card').addEventListener('click', function() {
+    purchaseItem('children');
+});
 
-    const catesPriceField = getInputValue('cates-price');
-    const catesPrice = parseFloat(catesPriceField);
-
-    const totalField = document.getElementById('total-price');
-    const totalText = totalField.innerText;
-    const totalPrice = parseFloat(totalText);
-    
-    const catesTotalPrice = catesPrice + totalPrice
-    totalField.innerText = catesTotalPrice.toFixed(2);
-    
-}
-
-// chair
-function chairPurchase(){
-    const chairTitle = getTitle('chair-title');
-    const li = document.createElement('li');
-    li.innerText = chairTitle
-    const selectedItems = document.getElementById('selected-items');
-    selectedItems.appendChild(li);
-
-    const chairPriceField = getInputValue('chair-price');
-    const chairPrice = parseFloat(chairPriceField);
-
-    const totalField = document.getElementById('total-price');
-    const totalText = totalField.innerText;
-    const totalPrice = parseFloat(totalText);
-    
-    const chairTotalPrice = chairPrice + totalPrice
-    totalField.innerText = chairTotalPrice.toFixed(2);
-
-}
-// children play
-function childrenPurchase(){
-    const childrenTitle = getTitle('children-title');
-    const li = document.createElement('li');
-    li.innerText = childrenTitle
-    const selectedItems = document.getElementById('selected-items');
-    selectedItems.appendChild(li);
-
-    const childrenPriceField = getInputValue('children-price');
-    const childrenPrice = parseFloat(childrenPriceField);
-
-    const totalField = document.getElementById('total-price');
-    const totalText = totalField.innerText;
-    const totalPrice = parseFloat(totalText);
-    
-    const childrenTotalPrice = childrenPrice + totalPrice
-    totalField.innerText = childrenTotalPrice.toFixed(2);
-
-}
-
-// sofa
-function sofaPurchase(){
-    const sofaTitle = getTitle('sofa-title');
-    const li = document.createElement('li');
-    li.innerText = sofaTitle
-    const selectedItems = document.getElementById('selected-items');
-    selectedItems.appendChild(li);
-
-    const sofaPriceField = getInputValue('sofa-price');
-    const sofaPrice = parseFloat(sofaPriceField);
-
-    const totalField = document.getElementById('total-price');
-    const totalText = totalField.innerText;
-    const totalPrice = parseFloat(totalText);
-    
-    const sofaTotalPrice = sofaPrice + totalPrice
-    totalField.innerText = sofaTotalPrice.toFixed(2);
-
-}
-
-
-
+document.getElementById('sofa-card').addEventListener('click', function() {
+    purchaseItem('sofa');
+});
 
 
 // Reusable function to get input value field as a number
@@ -142,6 +65,20 @@ function getTitle(titleId){
 
 
 
+// cuppon-btn 
+const cupponBtn = document.getElementById('coupon-btn');
+const totalPriceField = document.getElementById('total-price');
+const total = totalPriceField.innerText;
+const totalPrice = parseFloat(total);
+
+if(totalPrice < 200){
+    cupponBtn.disabled = true;
+    cupponBtn.style.backgroundColor = '#CCCCCC';
+}else {
+    cupponBtn.disabled = false;
+    
+}
+
 
 
 
@@ -161,8 +98,8 @@ if (newTotalPrice < 200) {
 }
 
 
-// refresh the whole page
+// refresh the whole page using go home button
 const goHomeButton = document.getElementById('goHome');
 goHomeButton.addEventListener('click', function() {
-    location.reload(); // 
+    location.reload();
 });
