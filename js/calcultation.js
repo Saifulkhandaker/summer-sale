@@ -37,6 +37,11 @@ function purchaseItem(itemType) {
     
     const itemTotalPrice = price + totalPrice;
     totalField.innerText = itemTotalPrice.toFixed(2);
+
+    const newTotalValue = document.getElementById('new-total');
+    const newTotalText = newTotalValue.innerText;
+    const newTotal = parseFloat(newTotalText);
+    newTotalValue.innerText = itemTotalPrice.toFixed(2); 
     
     //purchasebutton enabled 
     if(itemTotalPrice > 0){
@@ -44,9 +49,9 @@ function purchaseItem(itemType) {
         purchaseBtn.style.backgroundColor ='';
     }
     // coupon button enabled
-    if(itemTotalPrice > 200){
+    if(itemTotalPrice >= 200){
         cupponBtn.disabled = false;
-cupponBtn.style.backgroundColor = '';
+    cupponBtn.style.backgroundColor = '';
     }
     return itemTotalPrice;
 
@@ -79,7 +84,7 @@ document.getElementById('sofa-card').addEventListener('click', function() {
 
 
 
-// cuppon btn applyed in condition
+// cuppon btn applyed with condition
 document.getElementById('coupon-btn').addEventListener('click', function(){
     const discountField = document.getElementById('discount-price')
         const discountText = discountField.innerText;
@@ -99,7 +104,7 @@ document.getElementById('coupon-btn').addEventListener('click', function(){
         const newTotalText = newTotalValue.innerText;
         const newTotal = parseFloat(newTotalText);
         const total = totalPrice - discountTotal;
-        newTotalValue.innerText = total;
+        newTotalValue.innerText = total.toFixed(2);
         }
     } 
 })
